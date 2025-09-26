@@ -139,6 +139,6 @@ def talnalas(n, m, initial, objective, lucky) :
                 graph[s1].append(s2)
     found, size, path = search(initial, objective, graph, [])
     if not found :
-        return False, math.inf, []
+        return False, 0, []
     else :
         return True, size, path
