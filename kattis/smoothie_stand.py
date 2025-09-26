@@ -1,0 +1,54 @@
+
+
+def smoothie_stand(k, r, ingredients, recipes) :
+    """
+    https://open.kattis.com/problems/smoothiestand
+    We have k ingredients and r recipes.
+    For each ingredients, we have a stock, the stock of ingredient i
+    can be retrieved with ingredients[i]
+    
+    Each recipes uses a certain amount of stock of each ingredients each
+    time the recipe is done.
+    The first recipe uses recipes[0][i] stock of the ith ingredient.
+    Each time the ith recipe is done, we gain a score of recipes[i][k]
+    
+    The goal is to select a single recipe and make the maximum score.
+    
+    Output the maximum score achievable.
+
+    Parameters
+    ----------
+    k : Integer
+        The number of ingredients
+    r : Integer
+        The number of recipes
+    ingredients : Array of Integers
+        The stock of all ingredients
+    recipes : Array of Array of Integers
+        Contrains all recipes.
+        Each array describing a recipe contrains the necessary stock of
+        each ingredient to make it once and the score obtained from
+        doing this recipe once.
+
+    Returns
+    -------
+    best_score : Integer
+        The maximum score achievable by choosing only a single recipe.
+
+    """
+    import math
+    
+    best_score = -1
+    for recipe in recipes :        
+        bottleneck = math.inf
+        for i in range(k) :
+            if recipe[i] > 0 :
+                s = ingredients[i] // recipe[i]
+                if s < bottleneck :
+                    bottleneck = s
+        score = bottleneck * recipe[k]
+        
+        if score > best_score :
+            best_score = score
+    
+    return best_score
