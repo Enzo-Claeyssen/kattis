@@ -1,6 +1,12 @@
+"""
+Python solution for the following kattis problem :
+    https://open.kattis.com/problems/smoothiestand
+"""
 
 
-def smoothie_stand(k, r, ingredients, recipes) :
+import math
+
+def smoothie_stand(k, ingredients, recipes) :
     """
     https://open.kattis.com/problems/smoothiestand
     We have k ingredients and r recipes.
@@ -36,19 +42,15 @@ def smoothie_stand(k, r, ingredients, recipes) :
         The maximum score achievable by choosing only a single recipe.
 
     """
-    import math
-    
     best_score = -1
-    for recipe in recipes :        
+    for recipe in recipes :
         bottleneck = math.inf
         for i in range(k) :
             if recipe[i] > 0 :
                 s = ingredients[i] // recipe[i]
-                if s < bottleneck :
-                    bottleneck = s
+                bottleneck = min(bottleneck, s)
         score = bottleneck * recipe[k]
-        
-        if score > best_score :
-            best_score = score
-    
+
+        best_score = max(best_score, score)
+
     return best_score

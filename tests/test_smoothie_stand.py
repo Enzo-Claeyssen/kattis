@@ -6,23 +6,38 @@ Created on Fri Sep 26 11:39:55 2025
 @author: enzo
 """
 
-import pytest
 from kattis.smoothie_stand import smoothie_stand
 
 
 def test_sample1() :
-    k, r = 3, 2
+    """
+    Simple test for smoothie stand
+
+    Returns
+    -------
+    None.
+
+    """
+    k = 3
     ingredients = [5, 10, 10]
     recipes = [
         [1, 4, 1, 5],
         [3, 3, 3, 3]
         ]
     expected = 10
-    assert smoothie_stand(k, r, ingredients, recipes) == expected
+    assert smoothie_stand(k, ingredients, recipes) == expected
 
 
 def test_sample2() :
-    k, r = 4, 3
+    """
+    Testing when most valuable recipe should not be picked.
+
+    Returns
+    -------
+    None.
+
+    """
+    k = 4
     ingredients = [10, 9, 8, 7]
     recipes = [
         [0, 1, 2, 4, 10],
@@ -30,4 +45,4 @@ def test_sample2() :
         [2, 0, 3, 3, 5]
         ]
     expected = 12
-    assert smoothie_stand(k, r, ingredients, recipes) == expected
+    assert smoothie_stand(k, ingredients, recipes) == expected

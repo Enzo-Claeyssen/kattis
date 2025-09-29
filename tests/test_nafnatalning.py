@@ -6,19 +6,34 @@ Created on Fri Sep 26 11:36:37 2025
 @author: enzo
 """
 
-import pytest
 from kattis.nafnatalning import nafnatalning
 
 
 def test_sample1() :
-    n, P = 2, 5
+    """
+    Simple test
+
+    Returns
+    -------
+    None.
+
+    """
+    n, p = 2, 5
     number_names = [2, 3]
     expected = 2
-    assert nafnatalning(n, P, number_names) == expected
+    assert nafnatalning(n, p, number_names) == expected
 
 
 def test_sample2() :
-    n, P = 10, 5
+    """
+    Only one name for each origin
+
+    Returns
+    -------
+    None.
+
+    """
+    n, p = 10, 5
     number_names = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     expected = 9
-    assert nafnatalning(n, P, number_names) == expected
+    assert nafnatalning(n, p, number_names) == expected

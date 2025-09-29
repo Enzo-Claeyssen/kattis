@@ -1,4 +1,7 @@
-
+"""
+Python solution for the following kattis problem :
+    https://open.kattis.com/problems/bocchinorokku
+"""
 
 def sorting_bocchinorokku(n, weights) :
     """
@@ -26,12 +29,12 @@ def sorting_bocchinorokku(n, weights) :
     answer = [0 for _ in range(n)]
     sorted_weights = weights.copy()
     sorted_weights.sort()
-    
+
     map_to_old_index = {} # Maps a rock's weight to it's index in weights
     for i in range(n) :
         map_to_old_index[weights[i]] = i
-    
+
     for i in range(n) :
         answer[map_to_old_index[sorted_weights[i]]] = i
-    
+
     return answer

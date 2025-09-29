@@ -1,4 +1,7 @@
-
+"""
+Python solution for the following kattis problem :
+    https://open.kattis.com/problems/encryption
+"""
 
 def encryption(s, d, common) :
     """
@@ -28,9 +31,8 @@ def encryption(s, d, common) :
         The shortest word for which s and d are subsequences.
 
     """
-    
     res = ""
-    
+
     s_iterator = iter(s)
     d_iterator = iter(d)
     for element in common :
@@ -38,17 +40,17 @@ def encryption(s, d, common) :
         while candidate != element :
             res += candidate
             candidate = next(s_iterator)
-        
+
         candidate = next(d_iterator)
         while candidate != element :
             res += candidate
             candidate = next(d_iterator)
-        
+
         res += element
-    
+
     for element in s_iterator :
         res += element
     for element in d_iterator :
         res += element
-    
+
     return res

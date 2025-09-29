@@ -1,6 +1,9 @@
+"""
+Python solution for the following kattis problem :
+    https://open.kattis.com/problems/dingdongditch
+"""
 
-
-def ding_dong_ditch(N, Q, angers, expectations) :
+def ding_dong_ditch(n, q, angers, expectations) :
     """
     https://open.kattis.com/problems/dingdongditch
     
@@ -32,11 +35,12 @@ def ding_dong_ditch(N, Q, angers, expectations) :
 
     """
     angers.sort()
-    
+
     cumulative_anger = []
     s = 0
-    for Ai in angers :
-        s += Ai
+    for i in range(n) :
+        a_i = angers[i]
+        s += a_i
         cumulative_anger.append(s)
-    
-    return [cumulative_anger[Bj - 1] for Bj in expectations]
+
+    return [cumulative_anger[expectations[j] - 1] for j in range(q)]

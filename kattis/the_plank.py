@@ -1,3 +1,7 @@
+"""
+Python solution for the following kattis problem :
+    https://open.kattis.com/problems/theplank
+"""
 
 def theplank(length) :
     """
@@ -32,7 +36,6 @@ def theplank(length) :
     """
     if length <= 2 :
         return length
-    elif length == 3 :
+    if length == 3 :
         return 4
-    else :
-        return theplank(length-1) + theplank(length-2) + theplank(length-3)
+    return theplank(length-1) + theplank(length-2) + theplank(length-3)

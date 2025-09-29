@@ -6,12 +6,18 @@ Created on Fri Sep 26 11:43:39 2025
 @author: enzo
 """
 
-import pytest
 from kattis.talnalas import talnalas
 
 
 def test_sample1() :
-    n, m = 4, 5
+    """
+    Simple test for talnalas
+
+    Returns
+    -------
+    None.
+
+    """
     initial = "1234"
     objective = "1337"
     lucky = [
@@ -31,11 +37,18 @@ def test_sample1() :
         "1336",
         "1337"
         ]
-    assert talnalas(n, m, initial, objective, lucky) == (True, expected_size, expected_path)
+    assert talnalas(initial, objective, lucky) == (True, expected_size, expected_path)
 
 
 def test_sample2() :
-    n, m = 1, 8
+    """
+    Testing using 9 -> 0 or 0 -> 9 shift
+
+    Returns
+    -------
+    None.
+
+    """
     initial = "2"
     objective = "8"
     lucky = [
@@ -58,11 +71,18 @@ def test_sample2() :
         "9",
         "8"
         ]
-    assert talnalas(n, m, initial, objective, lucky) == (True, expected_size, expected_path)
+    assert talnalas(initial, objective, lucky) == (True, expected_size, expected_path)
 
 
 def test_sample3() :
-    n, m = 8, 4
+    """
+    Testing detection of impossible cases
+
+    Returns
+    -------
+    None.
+
+    """
     initial = "85362837"
     objective = "63812736"
     lucky = [
@@ -75,4 +95,4 @@ def test_sample3() :
         ]
     expected_size = 0
     expected_path = []
-    assert talnalas(n, m, initial, objective, lucky) == (False, expected_size, expected_path)
+    assert talnalas(initial, objective, lucky) == (False, expected_size, expected_path)

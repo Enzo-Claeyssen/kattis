@@ -1,4 +1,8 @@
-
+"""
+Python solution for the following kattis problem :
+    https://open.kattis.com/problems/talnalas
+"""
+import math
 
 def get_distance(s1, s2) :
     """
@@ -56,27 +60,32 @@ def search(initial, end, get_neighbor, already_seen) :
         The smallest path from initial to end.
 
     """
-    import math
     if initial == end :
         return True, 0, [initial]
-    else :
-        found = False
-        best_size = math.inf
-        best_path = []
-        for neighbor in get_neighbor[initial] :
-            if neighbor not in already_seen :
-                current_found, current_size, current_path = search(neighbor, end, get_neighbor, already_seen + [neighbor])
-                if current_found :
-                    if current_size < best_size :
-                        found = True
-                        best_size = current_size + 1
-                        best_path = [initial] + current_path
-        return found, best_size, best_path
+    found = False
+    best_size = math.inf
+    best_path = []
+    for neighbor in get_neighbor[initial] :
+        if neighbor not in already_seen :
+
+            current_found, current_size, current_path = search(
+                neighbor,
+                end,
+                get_neighbor,
+                already_seen + [neighbor]
+                )
+
+            if current_found :
+                if current_size < best_size :
+                    found = True
+                    best_size = current_size + 1
+                    best_path = [initial] + current_path
+    return found, best_size, best_path
 
 
 
 
-def talnalas(n, m, initial, objective, lucky) :
+def talnalas(initial, objective, lucky) :
     """
     https://open.kattis.com/problems/talnalas
     
@@ -107,10 +116,6 @@ def talnalas(n, m, initial, objective, lucky) :
 
     Parameters
     ----------
-    n : Integer
-        Number of digit in the code
-    m : Integer
-        Number of lucky codes other than the initial and objective ones
     initial : String
         The initially selected code
     objective : String
@@ -130,7 +135,6 @@ def talnalas(n, m, initial, objective, lucky) :
         in the right order.
 
     """
-    import math
     graph = {}
     for s1 in lucky :
         graph[s1] = []
@@ -140,5 +144,4 @@ def talnalas(n, m, initial, objective, lucky) :
     found, size, path = search(initial, objective, graph, [])
     if not found :
         return False, 0, []
-    else :
-        return True, size, path
+    return True, size, path
