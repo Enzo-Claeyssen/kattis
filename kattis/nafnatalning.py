@@ -2,8 +2,12 @@
 Python solution for the following kattis problem :
     https://open.kattis.com/problems/nafnatalning
 """
+import marimo
+
+app = marimo.App(width="medium")
 
 
+@app.function
 def nafnatalning(n, p, number_names) :
     """
     https://open.kattis.com/problems/nafnatalning
@@ -40,3 +44,18 @@ def nafnatalning(n, p, number_names) :
     if number_of_pairs%p == 0 :
         return number_of_pairs // p
     return number_of_pairs // p +1
+
+
+@app.cell
+def _():
+    """
+    Cell for notebook to test function
+
+    Returns
+    -------
+    None.
+
+    """
+    n, p = 2, 5
+    number_names = [2, 3]
+    print(nafnatalning(n, p, number_names))

@@ -2,10 +2,12 @@
 Python solution for the following kattis problem :
     https://open.kattis.com/problems/smoothiestand
 """
-
-
 import math
+import marimo
 
+app = marimo.App(width="medium")
+
+@app.function
 def smoothie_stand(k, ingredients, recipes) :
     """
     https://open.kattis.com/problems/smoothiestand
@@ -54,3 +56,23 @@ def smoothie_stand(k, ingredients, recipes) :
         best_score = max(best_score, score)
 
     return best_score
+
+
+@app.cell
+def _():
+    """
+    Cell for notebook to test function
+
+    Returns
+    -------
+    None.
+
+    """
+    k = 4
+    ingredients = [10, 9, 8, 7]
+    recipes = [
+        [0, 1, 2, 4, 10],
+        [3, 1, 1, 2, 4],
+        [2, 0, 3, 3, 5]
+        ]
+    print(smoothie_stand(k, ingredients, recipes))

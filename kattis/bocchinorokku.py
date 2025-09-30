@@ -3,15 +3,22 @@ Python solution for the following kattis problem :
     https://open.kattis.com/problems/bocchinorokku
 """
 
+import marimo
+
+
+app = marimo.App(width="medium")
+
+
+@app.function
 def sorting_bocchinorokku(n, weights) :
     """
     https://open.kattis.com/problems/bocchinorokku
-    
+
     There are n rocks of different weights.
     Weights of the ith rock is accessible through weights[i]
-    
+
     We want to know for each rock, how many other rock weigh less.
-    
+
 
     Parameters
     ----------
@@ -38,3 +45,18 @@ def sorting_bocchinorokku(n, weights) :
         answer[map_to_old_index[sorted_weights[i]]] = i
 
     return answer
+
+
+@app.cell
+def _():
+    """
+    Cell for notebook to test function
+
+    Returns
+    -------
+    None.
+
+    """
+    n = 3
+    weights = [2, 3, 0]
+    print(sorting_bocchinorokku(n, weights))

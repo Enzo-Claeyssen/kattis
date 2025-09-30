@@ -2,7 +2,11 @@
 Python solution for the following kattis problem :
     https://open.kattis.com/problems/theplank
 """
+import marimo
 
+app = marimo.App(width="medium")
+
+@app.function
 def theplank(length) :
     """
     https://open.kattis.com/problems/theplank
@@ -39,3 +43,17 @@ def theplank(length) :
     if length == 3 :
         return 4
     return theplank(length-1) + theplank(length-2) + theplank(length-3)
+
+
+@app.cell
+def _():
+    """
+    Cell for notebook to test function
+
+    Returns
+    -------
+    None.
+
+    """
+    length = 4
+    print(theplank(length))

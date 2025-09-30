@@ -2,15 +2,17 @@
 Python solution for the following kattis problem :
     https://open.kattis.com/problems/candy
 """
-
 import math
+import marimo
+
+app = marimo.App(width="medium")
 
 
+@app.function
 def get_distance(f, selected) :
     """
     Gives the minimal number of steps to switch the F selected boxes
     to the first f positions.
-    
     selected is the array of indeces of selected boxes it has to be sorted
     and len(selected) = f
     """
@@ -21,6 +23,7 @@ def get_distance(f, selected) :
     return d
 
 
+@app.function
 def get_combinations(n, f, start_index) :
     """
     Returns the f-uplet of integers from 0 to n-1
@@ -38,20 +41,18 @@ def get_combinations(n, f, start_index) :
     return res
 
 
+@app.function
 def candy(n, f, t, stock) :
     """
-    https://open.kattis.com/problems/candy
-    
+    https://open.kattis.com/problems/candy       
     There are n boxes in a room.
     The ith box has stock[i] candies remaining.
     Boxes are ordered, the box 0 is the nearest box from the entrance
     And the box n-1 is the one that is the most far away from the entrance.
-    
     Each step we can only permute two adjacent boxes.
-    
     We want the first f nearest box from the entrance to have a sum
     of candies of at least t.
-    
+
     Output a boolean telling whetther it is possible to fullfill 
     the condition, and if it is, 
     output the smallest number of steps needed to fullfill it.
@@ -91,3 +92,18 @@ def candy(n, f, t, stock) :
     if best_comb is None :
         return False, -1
     return True, mini
+
+
+@app.cell
+def _():
+    """
+    Cell for notebook to test function
+
+    Returns
+    -------
+    None.
+
+    """
+    n, f, t = 6, 2, 27
+    stock = [10, 4, 20, 6, 3, 3]
+    print(candy(n, f, t, stock))

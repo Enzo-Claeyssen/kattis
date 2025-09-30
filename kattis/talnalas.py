@@ -3,7 +3,11 @@ Python solution for the following kattis problem :
     https://open.kattis.com/problems/talnalas
 """
 import math
+import marimo
 
+app = marimo.App(width="medium")
+
+@app.function
 def get_distance(s1, s2) :
     """
     Computes the number of steps needed to go from s1 to s2.
@@ -33,7 +37,7 @@ def get_distance(s1, s2) :
 
 
 
-
+@app.function
 def search(initial, end, get_neighbor, already_seen) :
     """
     Finds the shortest path from intial to end on the unoriented and 
@@ -84,7 +88,7 @@ def search(initial, end, get_neighbor, already_seen) :
 
 
 
-
+@app.function
 def talnalas(initial, objective, lucky) :
     """
     https://open.kattis.com/problems/talnalas
@@ -145,3 +149,27 @@ def talnalas(initial, objective, lucky) :
     if not found :
         return False, 0, []
     return True, size, path
+
+
+@app.cell
+def _():
+    """
+    Cell for notebook to test function
+
+    Returns
+    -------
+    None.
+
+    """
+    initial = "1234"
+    objective = "1337"
+    lucky = [
+        "1234",
+        "1337",
+        "1236",
+        "2234",
+        "1336",
+        "1235",
+        "0234"
+        ]
+    print(talnalas(initial, objective, lucky))

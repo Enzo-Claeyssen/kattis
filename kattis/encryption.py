@@ -2,7 +2,12 @@
 Python solution for the following kattis problem :
     https://open.kattis.com/problems/encryption
 """
+import marimo
 
+app = marimo.App(width="medium")
+
+
+@app.function
 def encryption(s, d, common) :
     """
     https://open.kattis.com/problems/encryption
@@ -54,3 +59,19 @@ def encryption(s, d, common) :
         res += element
 
     return res
+
+
+@app.cell
+def _():
+    """
+    Cell for notebook to test function
+
+    Returns
+    -------
+    None.
+
+    """
+    s  = "abac"
+    d = "adbdc"
+    common = "abc"
+    print(encryption(s, d, common))
