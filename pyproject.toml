@@ -10,8 +10,21 @@ python = "^3.11"
 pytest = "^8.4.2"
 coverage = "^7.10.7"
 pylint = "^3.3.8"
+marimo = "^0.16.2"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.marimo.ai]
+rules = "- prefer polars over pandas\n- make charts using altair"
+
+[tool.marimo.save]
+autosave = "after_delay"
+autosave_delay = 1000
+format_on_save = true
+
+[tool.marimo.package_management]
+manager = "poetry"
